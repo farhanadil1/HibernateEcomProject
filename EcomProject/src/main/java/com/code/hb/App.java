@@ -41,7 +41,7 @@ public class App {
         User user = new User();
         user.setUsername("bob");
         user.setPassword("pass123");
-        user.setEmailId("bob5@email.com");
+        user.setEmailId("bob7@email.com");
         user.setRole(Role.CUSTOMER);
         session.persist(user);
 

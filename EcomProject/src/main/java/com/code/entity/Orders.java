@@ -1,8 +1,13 @@
 package com.code.entity;
 
 
-import java.security.Timestamp;
-import java.sql.Date;
+import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
+
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,6 +48,17 @@ public class Orders {
 		this.totalAmount = d;
 		this.user = user;
 	}
+	@OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
+	private List<OrderDetails> orderDetails = new ArrayList<>();
+
+	public List<OrderDetails> getOrderDetails() {
+	    return orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetails> orderDetails) {
+	    this.orderDetails = orderDetails;
+	}
+
 	public int getId() {
 		return id;
 	}
