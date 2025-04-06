@@ -1,9 +1,10 @@
 package com.code.entity;
 
 
-import java.util.Date;
-import java.util.List;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.CascadeType;
@@ -30,7 +31,7 @@ public class Orders {
 	@Column(name="id")
 	private int id;
 	@Column(name="orderDate",nullable=false)
-	private Date orderDate;
+	private LocalDateTime orderDate;
 	@Column(name="totalAmount", nullable=false)
 	private double totalAmount;
 	@ManyToOne
@@ -42,7 +43,7 @@ public class Orders {
 		this.totalAmount=0;
 		
 	}
-	public Orders(Date date, double d, User user) {
+	public Orders(LocalDateTime date, double d, User user) {
 		super();
 		this.orderDate = date;
 		this.totalAmount = d;
@@ -65,10 +66,10 @@ public class Orders {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getOrderDate() {
+	public LocalDateTime getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
 	}
 	public double getTotalAmount() {

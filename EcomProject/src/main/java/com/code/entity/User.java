@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+import com.code.entity.Role;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +25,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="user")
 public class User {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
@@ -35,11 +36,11 @@ public class User {
 	private String password;
 	@Column(name="emailId",nullable=false, unique=true)
 	private String emailId;
-	@Column(name="role",nullable = false)
 	@Enumerated(EnumType.STRING)
-	private Role role;
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private List<Orders> orders;
+    @Column(name = "role", nullable = false)
+    private Role role;
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//	private List<Orders> orders;
 	public User() {
 		this.id=0;
 		this.username=null;
@@ -47,13 +48,13 @@ public class User {
 		this.emailId=null;
 		this.role=null;
 	}
-	public User(String username, String password, String emailId, com.code.entity.Role customer, ArrayList<Orders> arrayList) {
+	public User(String username, String password, String emailId, Role role) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.emailId = emailId;
-		this.role = customer;
-		this.orders = arrayList;
+		this.role = role;
+		
 	}
 	public int getId() {
 		return id;
@@ -85,12 +86,12 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public List<Orders> getOrders() {
-		return orders;
-	}
-	public void setOrders(List<Orders> orders) {
-		this.orders = orders;
-	}
+//	public List<Orders> getOrders() {
+//		return orders;
+//	}
+//	public void setOrders(List<Orders> orders) {
+//		this.orders = orders;
+//	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", emailId=" + emailId
